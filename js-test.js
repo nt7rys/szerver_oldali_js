@@ -96,7 +96,17 @@ function getPeople() {
 //input: 3, output: Promise that resolves with 2
 //input: -11, output: Promise thet reject with an error message 'n has to be larger then -1'
 function fibonacci(n) {
+  return new Promise((resolve, reject) => {
+    if(n < 0) {
+      reject('n has to be larger than -1');
+    }
 
+    const fib = [0, 1];
+    for(let i=fib.length; i<n+1; i++) {
+        fib[i] = fib[i-2] + fib[i-1];
+    }
+    resolve(fib[n]);
+  });
 }
 
 
